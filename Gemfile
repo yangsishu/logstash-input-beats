@@ -5,4 +5,5 @@ gemspec
 
 if ENV["LOGSTASH_BRANCH"]
   gem 'logstash-core', :path => './logstash/logstash-core'
+  gem 'logstash-core-plugin-api', :path => './logstash/logstash-core-plugin-api'
 end
