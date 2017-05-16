@@ -2,13 +2,19 @@
 sudo: false
 language: ruby
 cache: bundler
-rvm:
-- jruby-1.7.25
-before_script:
-- bundle exec rake test:integration:setup
-- bundle exec rake vendor
-script:
-- ./gradlew test
-- bundle exec rspec spec
-- bundle exec rspec spec --tag integration
+env:
+matrix:
+  include:
+    - rvm: jruby-1.7.25
+    - rvm: jruby-1.7.25
+      env: LOGSTASH_BRANCH=master
+    - rvm: jruby-1.7.25
+      env: LOGSTASH_BRANCH=5.x
+    - rvm: jruby
+      env: LOGSTASH_BRANCH=feature/jruby-9k
+  allow_failures:
+    - rvm: jruby
+  fast_finish: true
+script: ci/build.sh
+
 jdk: oraclejdk8
