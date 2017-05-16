@@ -9,6 +9,7 @@ if [ "$LOGSTASH_BRANCH" ]; then
     cd ../
 fi
 
+bundle install
 bundle exec rake test:integration:setup
 bundle exec rake vendor
 ./gradlew test
