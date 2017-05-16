@@ -5,7 +5,7 @@ if [ "$LOGSTASH_BRANCH" ]; then
     git clone https://github.com/elastic/logstash.git $BRANCH --depth 1
     cd ./logstash
     # We need to build the jars for that specific version
-    gradle assemble
+    ./gradlew assemble
     cd ../
 fi
 
