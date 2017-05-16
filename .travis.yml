@@ -15,6 +15,7 @@ matrix:
   allow_failures:
     - rvm: jruby
   fast_finish: true
+install:
 script: ci/build.sh
 
 jdk: oraclejdk8
