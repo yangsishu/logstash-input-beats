@@ -1,9 +1,11 @@
 #!/bin/bash
-set -ev
+set -e
 
 if [ "$LOGSTASH_BRANCH" ]; then
-    git clone https://github.com/elastic/logstash.git $BRANCH --depth 1
+    git clone -b $BRANCH https://github.com/elastic/logstash.git logstash --depth 1
     cd ./logstash
+    echo "Building plugins with Logstash version:"
+    cat versions.yml
     # We need to build the jars for that specific version
     ./gradlew assemble
     cd ../
